@@ -2,7 +2,10 @@
 #ifndef DSAudioEngine_H
 #define DSAudioEngine_H
 
+/////////////
 #pragma comment(lib, "dsound.lib")
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "winmm.lib")
 #include <dsound.h> //direct sound, 
 #include <windef.h> 
 #include <string>
@@ -18,8 +21,11 @@ public:
 	void Init(HWND window);
 	void Destroy();
 
-	void LoadSound(std::wstring fname);
+	void LoadSound(std::string fname);
+
 	void PlayLoadedSound();
+	void StopPlayingLoadedSound();
+
 private:
 	HWND main_window;
 
