@@ -1,10 +1,12 @@
 #include "DSAudioEngine.h"
 
 DSAudioEngine::DSAudioEngine() :
+	main_window(0),
 	direct_sound(0),
 	primary_buffer(0),
 	secondary_buffer(0)
-{}
+{
+}
 
 DSAudioEngine::~DSAudioEngine() {
 	Destroy();
@@ -60,8 +62,11 @@ void DSAudioEngine::Destroy()
 {
 	//release the primary buffer
 	primary_buffer->Release();
+	//release the primary buffer
+	secondary_buffer->Release();
 	//release the direct sound interface pointer
 	direct_sound->Release();
+
 }
 
 void DSAudioEngine::LoadSound(std::string fname)
